@@ -13,8 +13,8 @@ def finding_largest(array):
             if current_sum > highest_sum:
                 highest_sum=current_sum
                 highest_sub=current_sub
-            current_sum=array[i]
-            current_sub=[array[i]]
+            current_sum=array[i] # written array[0] before
+            current_sub=[array[i]] # written [array[0]] before
         if current_sum>highest_sum:
             highest_sub=current_sub
     return highest_sub
