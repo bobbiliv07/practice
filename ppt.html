@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Version Control Systems</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 1rem;
+        }
+        .slide {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            width: 100%;
+            height: 100%;
+            max-width: 900px;
+            min-height: 500px;
+            background-color: white;
+            padding: 2.5rem;
+            border-radius: 1.5rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+            transition: opacity 0.5s ease-in-out;
+            opacity: 0;
+        }
+        .slide.active {
+            display: flex;
+            opacity: 1;
+        }
+        .slide-content {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .slide h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1f2937;
+        }
+        .slide h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #4b5563;
+            margin-top: 1rem;
+        }
+        .slide p, .slide li, .slide td {
+            font-size: 1.25rem;
+            color: #374151;
+            line-height: 1.6;
+            margin-top: 1rem;
+        }
+        .slide ul, .slide ol {
+            list-style-type: disc;
+            padding-left: 2rem;
+            text-align: left;
+        }
+        .slide li {
+            margin-bottom: 0.5rem;
+        }
+        .slide hr {
+            border-top: 1px solid #e5e7eb;
+            margin: 2rem 0;
+            width: 100%;
+        }
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-top: 2rem;
+            max-width: 900px;
+        }
+        .nav-button {
+            padding: 0.75rem 1.5rem;
+            background-color: #3b82f6;
+            color: white;
+            font-weight: 600;
+            border-radius: 9999px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: transform 0.2s ease-in-out, background-color 0.2s;
+        }
+        .nav-button:hover {
+            background-color: #2563eb;
+            transform: translateY(-2px);
+        }
+        .nav-button:disabled {
+            background-color: #9ca3af;
+            cursor: not-allowed;
+        }
+        .table-container {
+            margin-top: 1.5rem;
+            width: 100%;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+        th, td {
+            padding: 1rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        th {
+            background-color: #f9fafb;
+            font-weight: 600;
+            color: #4b5563;
+        }
+        .slide p {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation-container w-full max-w-6xl flex flex-col items-center">
+        <!-- Slide Container -->
+        <div id="slides-container" class="relative w-full flex justify-center">
+
+            <!-- Slide 1: Title Slide -->
+            <div id="slide-1" class="slide active">
+                <div class="slide-content">
+                    <h1>An Introduction to Version Control Systems</h1>
+                    <p class="text-xl mt-4">Why We Use Them</p>
+                    <div class="text-gray-500 mt-8 text-lg">
+                        <p>Author: Your Name</p>
+                        <p>Date: Current Date</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 2: What is a VCS? -->
+            <div id="slide-2" class="slide">
+                <div class="slide-content">
+                    <h2>What is a Version Control System (VCS)?</h2>
+                    <p class="text-xl">A Version Control System (VCS) is a tool that helps you manage and track changes to your files and projects over time. Think of it as a "save" button on steroids that keeps a record of every single change you make.</p>
+                </div>
+            </div>
+
+            <!-- Slide 3: Why Do We Need VCS? (Part 1) -->
+            <div id="slide-3" class="slide">
+                <div class="slide-content">
+                    <h2>Why Do We Need VCS? (Part 1: Collaboration)</h2>
+                    <ul class="list-disc pl-8 mt-4 text-xl">
+                        <li>**Teamwork:** Imagine multiple people working on the same document at once. Without a VCS, you'd constantly be sending files back and forth, leading to confusion and lost work.</li>
+                        <li>**Preventing Overwrites:** A VCS provides a structured way for a team to work together without accidentally overwriting each other's changes. It automatically handles conflicts and makes it easy to merge different people's work.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Slide 4: Why Do We Need VCS? (Part 2) -->
+            <div id="slide-4" class="slide">
+                <div class="slide-content">
+                    <h2>Why Do We Need VCS? (Part 2: History & Safety)</h2>
+                    <ul class="list-disc pl-8 mt-4 text-xl">
+                        <li>**Complete History:** A VCS keeps a complete, detailed history of every change. You can see who made a change, when they made it, and why.</li>
+                        <li>**The Safety Net:** Made a mistake? Deleted an important file? Introduced a bug? With a VCS, you can easily go back to a previous, working version of your project at any time. It's like having an infinite "undo" button for your entire codebase.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Slide 5: The Core Workflow -->
+            <div id="slide-5" class="slide">
+                <div class="slide-content">
+                    <h2>The Core Workflow</h2>
+                    <p class="text-xl">Every VCS follows a basic loop:</p>
+                    <ol class="list-decimal pl-8 mt-4 text-xl">
+                        <li>**Edit** your files in your working directory.</li>
+                        <li>**Stage** the changes you want to save.</li>
+                        <li>**Commit** the staged changes to save a new version.</li>
+                        <li>**Push** your changes to the central repository to share them.</li>
+                        <li>**Pull** new changes from the central repository to get what others have done.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- Slide 6: Types of Version Control -->
+            <div id="slide-6" class="slide">
+                <div class="slide-content">
+                    <h2>Types of Version Control</h2>
+                    <ul class="list-none text-xl space-y-4">
+                        <li>**1. Local Version Control Systems (LVCS):**
+                            <ul class="list-disc pl-8">
+                                <li>**Description:** Stores all versions on your local machine.</li>
+                                <li>**Limitation:** High risk of data loss if your local machine fails.</li>
+                            </ul>
+                        </li>
+                        <li>**2. Centralized Version Control Systems (CVCS):**
+                            <ul class="list-disc pl-8">
+                                <li>**Description:** A single server holds all the versioned files, and people check out files from there.</li>
+                                <li>**Limitation:** A single point of failure (if the server goes down, no one can save versioned changes).</li>
+                            </ul>
+                        </li>
+                        <li>**3. Distributed Version Control Systems (DVCS):**
+                            <ul class="list-disc pl-8">
+                                <li>**Description:** Everyone gets a full copy of the entire repository's history, not just the latest files.</li>
+                                <li>**Advantage:** No single point of failure; you can work offline and sync with others later.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Slide 7: The Power of Branching -->
+            <div id="slide-7" class="slide">
+                <div class="slide-content">
+                    <h2>The Power of Branching</h2>
+                    <p class="text-xl mt-4">**What is a Branch?**</p>
+                    <p class="text-xl">A branch is a separate, parallel line of development that allows you to work on new features or bug fixes without interfering with the main project.</p>
+                    <p class="text-xl mt-4">**Why Use Branches?**</p>
+                    <ul class="list-disc pl-8 mt-4 text-xl">
+                        <li>**Isolation:** Work on a new feature or bug fix without breaking the main branch.</li>
+                        <li>**Experimentation:** Safely try out new ideas in an isolated environment.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Slide 8: The Role of the Repository -->
+            <div id="slide-8" class="slide">
+                <div class="slide-content">
+                    <h2>The Role of the Repository</h2>
+                    <ul class="list-none text-xl space-y-4">
+                        <li>**Repository:** The heart of a VCS. It is the central database that stores all the files, their history, and the different versions.</li>
+                        <li>**Remote vs. Local:**
+                            <ul class="list-disc pl-8">
+                                <li>**Local Repository:** The copy of the project and its history on your own computer.</li>
+                                <li>**Remote Repository:** The shared version of the project, often hosted on a server, where everyone on the team can share and access changes.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Slide 9: Collaboration in Action -->
+            <div id="slide-9" class="slide">
+                <div class="slide-content">
+                    <h2>Collaboration in Action</h2>
+                    <p class="text-xl mt-4">A typical workflow looks like this:</p>
+                    <ol class="list-decimal pl-8 mt-4 text-xl">
+                        <li>**Clone** a project to get a local copy.</li>
+                        <li>**Create a new branch** to work on your specific task.</li>
+                        <li>**Commit** your changes as you make progress.</li>
+                        <li>**Push** your branch to the remote repository.</li>
+                        <li>**Merge** your changes into the main branch, often after a review from a teammate.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- Slide 10: Conclusion -->
+            <div id="slide-10" class="slide">
+                <div class="slide-content">
+                    <h2>Conclusion</h2>
+                    <ul class="list-disc pl-8 mt-4 text-xl">
+                        <li>**A VCS is an essential tool** for any project that involves code or collaboration.</li>
+                        <li>It provides a **safe, reliable way to collaborate** on projects and manage their history.</li>
+                        <li>The concepts of **commits, branches, and repositories** are the building blocks for effective version control.</li>
+                    </ul>
+                    <hr class="mt-8">
+                    <p class="text-xl mt-8">**Questions?**</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div class="button-container">
+            <button id="prevBtn" class="nav-button" disabled>Previous</button>
+            <button id="nextBtn" class="nav-button">Next</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const slides = document.querySelectorAll('.slide');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            let currentSlideIndex = 0;
+
+            const updateButtons = () => {
+                prevBtn.disabled = currentSlideIndex === 0;
+                nextBtn.disabled = currentSlideIndex === slides.length - 1;
+            };
+
+            const showSlide = (index) => {
+                slides.forEach((slide) => {
+                    slide.classList.remove('active');
+                });
+                slides[index].classList.add('active');
+                updateButtons();
+            };
+
+            nextBtn.addEventListener('click', () => {
+                if (currentSlideIndex < slides.length - 1) {
+                    currentSlideIndex++;
+                    showSlide(currentSlideIndex);
+                }
+            });
+
+            prevBtn.addEventListener('click', () => {
+                if (currentSlideIndex > 0) {
+                    currentSlideIndex--;
+                    showSlide(currentSlideIndex);
+                }
+            });
+
+            // Initial setup
+            showSlide(currentSlideIndex);
+        });
+    </script>
+</body>
+</html>
